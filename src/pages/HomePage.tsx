@@ -7,13 +7,22 @@ import {
   IonList,
   IonItem,
 
-
 } from '@ionic/react';
-import React from 'react';
-import {entries} from '../data';
+import React, {useState, useEffect} from 'react';
+import {firestore} from '../firebase';
+import {Entry, toEntry} from '../models';
+import {useAuth} from '../auth';
+
 
 
 const HomePage: React.FC = () => {
+  const {userId} = useAuth();
+  const [entries, setEntries] = useState<Entry[]>([]);
+  useEffect(() => {
+      const entriesRef = firestore.collection('users').doc(userId)
+        .collection('entries');
+      entriesRef.get().then(({docs}) => setEntries(docs.map(toEntry)));
+  }, [userId]);
   return (
     <IonPage>
       <IonHeader>
