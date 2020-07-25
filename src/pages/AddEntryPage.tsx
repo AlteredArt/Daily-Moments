@@ -47,6 +47,7 @@ const AddEntryPage: React.FC = () => {
     }
   }, [pictureUrl]);
 
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files.length > 0) {
       const file = event.target.files.item(0);
@@ -54,6 +55,7 @@ const AddEntryPage: React.FC = () => {
       setPictureUrl(pictureUrl);
     }
   };
+
 
   const handlePictureClick = async () => {
     if (isPlatform('capacitor')){
@@ -70,6 +72,8 @@ const AddEntryPage: React.FC = () => {
     fileInputRef.current.click();
   }
 };
+
+
 
   const handleSave = async () => {
     const entriesRef = firestore.collection('users').doc(userId)
