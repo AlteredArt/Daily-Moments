@@ -8,3 +8,5 @@ This example is part of the Ionic React course.
  * [Firebase Authentication](https://firebase.google.com/docs/auth)
  * [Cloud Firestore](https://firebase.google.com/docs/firestore)
 # Daily-Moments
+
+implemented into both android and ios devices.
